@@ -1163,3 +1163,29 @@ a {
   color: var(--color-main);
   font-weight: 1.4rem;
 }
+
+
+@media screen and (max-width: 600px) {
+  .layout__box--activities {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 1rem auto !important;
+    width: 95% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 1rem !important;
+    box-shadow: none !important;
+    background: var(--color-dark);
+  }
+
+  .layout__boxHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--color-dark-light);
+    padding: 1rem;
+  }
+}
