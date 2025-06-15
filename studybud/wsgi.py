@@ -14,3 +14,14 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'studybud.settings')
 
 application = get_wsgi_application()
+
+
+import django
+from django.core.management import call_command
+
+django.setup()
+try:
+    call_command('makemigrations', interactive=False)
+    call_command('migrate', interactive=False)
+except Exception as e:
+    print(f"Migration failed: {e}")
