@@ -1,5 +1,8 @@
 from django.urls import path
 from . import views
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
+
 
 urlpatterns = [
     path('login/', views.loginPage, name="login"),
@@ -24,3 +27,13 @@ urlpatterns = [
 ]
 
 
+def create_admin_user(request):
+    User = get_user_model()
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@example.com', 'adminpassword')
+        return HttpResponse("Superuser created successfully.")
+    return HttpResponse("Superuser already exists.")
+
+urlpatterns += [
+    path('create-admin/', create_admin_user),
+]
