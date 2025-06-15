@@ -4,4 +4,7 @@ services:
     env: python
     buildCommand: |
       pip install -r requirements.txt
-    startCommand: gunicorn studybud.wsgi:application
+    startCommand: |
+      python manage.py migrate --noinput &&
+      python studybud/create_superuser.py &&
+      gunicorn studybud.wsgi:application
