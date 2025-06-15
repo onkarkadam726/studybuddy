@@ -205,3 +205,7 @@ def topicsPage(request):
 def activityPage(request):
     room_messages = Message.objects.all()
     return render(request, 'base/activity.html', {'room_messages': room_messages})
+
+from django.contrib.auth.models import User
+
+User.objects.create_superuser('onkar', 'onkarok619@gmail.com', '72698582')
