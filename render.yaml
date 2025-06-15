@@ -1,7 +1,1 @@
-services:
-  - type: web
-    name: studybuddy
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn studybud.wsgi
-    preDeployCommand: python manage.py migrate
+
