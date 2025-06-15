@@ -29,8 +29,8 @@ urlpatterns = [
 
 def create_admin_user(request):
     User = get_user_model()
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'admin@example.com', 'adminpassword')
+    if not User.objects.filter(username='onkar').exists():
+        User.objects.create_superuser('onkar', 'onkarok619@gmail.com', '72698582')
         return HttpResponse("Superuser created successfully.")
     return HttpResponse("Superuser already exists.")
 
