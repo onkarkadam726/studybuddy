@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+import cloudinary
+import cloudinary_storage
+import cloudinary.uploader
+import cloudinary.api
+
 
 from django.conf.global_settings import AUTH_USER_MODEL, MEDIA_ROOT
 
@@ -46,6 +51,9 @@ INSTALLED_APPS = [
     'rest_framework',
 
     "corsheaders",
+
+    'cloudinary',
+    'cloudinary_storage',
 
 
 ]
@@ -138,6 +146,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dq7gl32ea',
+    'API_KEY': '582397639613477',
+    'API_SECRET': 'hShKGg_IX6TENGKxgLcfw0MiXrk'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Uploaded media (like avatars) will go to Cloudinary, not local media folder
+
+
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
@@ -157,3 +176,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+

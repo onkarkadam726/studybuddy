@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="activities">
     <div class="activities__header">
         <h2>Recent Activities</h2>
@@ -5,9 +7,14 @@
     {% for message in room_messages %}
     <div class="activities__box">
         <div class="activities__boxHeader roomListRoom__header">
-            <a href="{% url 'user-profile' message.user.id %}" class="roomListRoom__author"><div class="avatar avatar--small">
-                <img src="{{message.user.avatar.url}}" />
-            </div>
+            <a href="{% url 'user-profile' message.user.id %}" class="roomListRoom__author">
+                <div class="avatar avatar--small">
+                    {% if message.user.avatar %}
+                        <img src="{{ message.user.avatar.url }}" alt="User Avatar" />
+                    {% else %}
+                        <img src="{% static 'images/avatar.svg' %}" alt="Default Avatar" />
+                    {% endif %}
+                </div>
                 <p>
                     @{{ message.user.name|default:message.user.username }}
                     <span>{{message.created|timesince}} ago</span>
